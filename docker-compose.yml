@@ -6,6 +6,7 @@ services:
       - "5000:5000"
     environment:
       - PYTHONUNBUFFERED=1
+      - TZ=America/New_York
     restart: always
     volumes:
         - ./status_log.json:/tracker/status_log.json
