@@ -13,7 +13,7 @@ app = Flask(__name__)
 hosts = {
     "Microsoft NCSI": "www.msftncsi.com",
     "Google": "google.com",
-    "Spectrum": "spectrum.com",
+    "OpenWRT": "openwrt.org",
 }
 
 log_file = Path("status_log.json")
