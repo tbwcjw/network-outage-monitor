@@ -1,0 +1,11 @@
+services:
+  trackerbot:
+    build: .
+    container_name: outage_tracker
+    ports:
+      - "5000:5000"
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: always
+    volumes:
+        - ./status_log.json:/tracker/status_log.json

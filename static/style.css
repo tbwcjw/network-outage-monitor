@@ -1,0 +1,61 @@
+#heatmap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    max-width: 100%;
+}
+
+#statusTable {
+    table-layout: fixed;
+    width: 100%;
+}
+
+#statusTable th:nth-last-child(1),
+#statusTable td:nth-last-child(1) {
+    max-width: 25%;
+    width: 25%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.heat-cell {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    background-color: #ebedf0;
+    cursor: pointer;
+}
+
+.heat-up {
+    background-color: #198754;
+}
+
+.heat-degraded {
+    background-color: #ffc107;
+}
+
+.heat-down {
+    background-color: #dc3545;
+}
+
+th.sortable {
+    cursor: pointer;
+    position: relative;
+}
+
+th.sortable::after {
+    content: "⇅";
+    font-size: 0.7em;
+    position: absolute;
+    right: 8px;
+    color: #6c757d;
+}
+
+th.sortable.sorted-asc::after {
+    content: "↑";
+}
+
+th.sortable.sorted-desc::after {
+    content: "↓";
+}
