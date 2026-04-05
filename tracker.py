@@ -86,7 +86,7 @@ def monitor_loop():
         statuses = [h["status"] for h in hosts_status.values()]
         if all(s == "up" for s in statuses):
             overall = "up"
-        elif any(s == "down" for s in statuses):
+        elif all(s == "down" for s in statuses):
             overall = "down"
         else:
             overall = "degraded"
