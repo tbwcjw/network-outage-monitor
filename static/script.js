@@ -16,7 +16,6 @@ function computeOverall(entry) {
 
     let downCount = 0;
     let degradedCount = 0;
-    let upCount = 0;
 
     hosts.forEach(host => {
         const h = entry.hosts[host];
@@ -24,16 +23,19 @@ function computeOverall(entry) {
 
         if (h.status === "down") downCount++;
         else if (h.status === "degraded") degradedCount++;
-        else if (h.status === "up") upCount++;
 
         if (h.latency_ms != null) { totalLatency += h.latency_ms; countLatency++; }
         if (h.packet_loss != null) { totalPacketLoss += h.packet_loss; countPacketLoss++; }
     });
 
     let overallStatus;
-    if (downCount === hosts.length) overallStatus = "down";
-    else if (degradedCount > 0) overallStatus = "degraded";
-    else overallStatus = "up";
+    if (downCount === hosts.length) {
+        overallStatus = "down"; // all hosts are down
+    } else if (downCount > 0 || degradedCount > 0) {
+        overallStatus = "degraded"; // at least one host down or degraded
+    } else {
+        overallStatus = "up"; // all hosts up
+    }
 
     const avgLatency = countLatency ? Math.round(totalLatency / countLatency) : null;
     const avgPacketLoss = countPacketLoss ? Math.round(totalPacketLoss / countPacketLoss) : null;
