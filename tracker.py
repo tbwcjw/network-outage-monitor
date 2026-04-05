@@ -11,7 +11,7 @@ from pathlib import Path
 app = Flask(__name__)
 
 hosts = {
-    "OpenWRT": "openwrt.org",
+    "Microsoft NCSI": "www.msftncsi.com",
     "Google": "google.com",
     "Spectrum": "spectrum.com",
 }
